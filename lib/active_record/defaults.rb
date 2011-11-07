@@ -80,8 +80,8 @@ module ActiveRecord
     end
     
     module InstanceMethods
-      def initialize_with_defaults(attributes = nil)
-        initialize_without_defaults(attributes)
+      def initialize_with_defaults(attributes = nil, options = {})
+        initialize_without_defaults(attributes, options)
         apply_default_attribute_values(attributes)
         yield self if block_given?
       end
@@ -100,7 +100,7 @@ module ActiveRecord
             end
             
             # Ignore a default value for association if association_id has been specified
-            reflection = self.class.reflections.values.find { |r| r.respond_to?(:primary_key_name) && r.primary_key_name == default.attribute }
+            reflection = self.class.reflections.values.find { |r| r.respond_to?(:foreign_key) && r.foreign_key == default.attribute }
             if reflection and reflection.macro == :belongs_to and attribute_keys.include?(reflection.name.to_s)
               next
             end
