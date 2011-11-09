@@ -80,8 +80,8 @@ module ActiveRecord
     end
     
     module InstanceMethods
-      def initialize_with_defaults(attributes = nil, options = {})
-        initialize_without_defaults(attributes, options)
+      def initialize_with_defaults(attributes = nil, *args)
+        initialize_without_defaults(attributes, *args)
         apply_default_attribute_values(attributes)
         yield self if block_given?
       end
