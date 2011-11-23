@@ -95,7 +95,7 @@ module ActiveRecord
             
             # Ignore a default value for association_id if association has been specified
             reflection = self.class.reflections[default.attribute.to_sym]
-            if reflection and reflection.macro == :belongs_to and attribute_keys.include?(reflection.primary_key_name)
+            if reflection and reflection.macro == :belongs_to and attribute_keys.include?(reflection.foreign_key)
               next
             end
             
