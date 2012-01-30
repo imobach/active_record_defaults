@@ -4,6 +4,7 @@ module ActiveRecord
       return if base.included_modules.include?(ActiveRecord::Defaults::InstanceMethods)
       
       base.extend ClassMethods
+      base.send :class_attribute, :attribute_defaults
       base.send(:include, InstanceMethods)
       
       base.send :alias_method, :initialize_without_defaults, :initialize
@@ -73,7 +74,7 @@ module ActiveRecord
             raise "pass either a hash of attribute/value pairs, or a single attribute with a block"
         end
         
-        write_inheritable_array :attribute_defaults, [*default_objects]
+        self.attribute_defaults << [*default_objects]
       end
       
       alias_method :default, :defaults
