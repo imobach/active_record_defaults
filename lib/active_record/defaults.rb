@@ -73,7 +73,8 @@ module ActiveRecord
             raise "pass either a hash of attribute/value pairs, or a single attribute with a block"
         end
         
-        write_inheritable_attribute :attribute_defaults, [*default_objects]
+        class_attribute :attribute_defaults
+        self.attribute_defaults = [*default_objects]
       end
       
       alias_method :default, :defaults
@@ -89,7 +90,7 @@ module ActiveRecord
       def apply_default_attribute_values(attributes)
         attribute_keys = (attributes || {}).keys.map!(&:to_s)
         
-        if attribute_defaults = self.class.read_inheritable_attribute(:attribute_defaults)
+        if self.class.respond_to?(:attribute_defaults) && attribute_defaults = self.class.attribute_defaults
           attribute_defaults.each do |default|
             next if attribute_keys.include?(default.attribute)
             
