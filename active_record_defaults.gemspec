@@ -12,7 +12,7 @@ Gem::Specification.new do |s|
   s.extra_rdoc_files = ["History.txt", "Manifest.txt", "PostInstall.txt", "README.rdoc"]
   s.files = ["History.txt", "MIT-LICENSE", "Manifest.txt", "PostInstall.txt", "README.rdoc", "Rakefile", "lib/active_record/defaults.rb", "lib/active_record_defaults.rb", "script/console", "script/destroy", "script/generate", "test/abstract_unit.rb", "test/database.yml", "test/fixtures/address.rb", "test/fixtures/group.rb", "test/fixtures/people.yml", "test/fixtures/person.rb", "test/fixtures/person_with_default_school.rb", "test/fixtures/person_with_default_school_id.rb", "test/fixtures/school.rb", "test/fixtures/schools.yml", "test/schema.rb", "test/test_active_record_defaults.rb", "test/test_helper.rb"]
   s.has_rdoc = true
-  s.homepage = %q{If you find this plugin useful, please consider a donation to show your support!}
+  s.homepage = "https://github.com/aussiegeek/active_record_defaults"
   s.post_install_message = %q{PostInstall.txt}
   s.rdoc_options = ["--main", "README.rdoc"]
   s.require_paths = ["lib"]
